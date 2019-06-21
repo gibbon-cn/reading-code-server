@@ -34,6 +34,7 @@ import { URI } from "vs/base/common/uri";
  * Initializes VS Code and provides a way to call into general client
  * functionality.
  */
+/// 初始化VS Code，并提供调用普通客户端功能的方式
 export class Workbench {
 	public readonly retry = client.retry;
 
