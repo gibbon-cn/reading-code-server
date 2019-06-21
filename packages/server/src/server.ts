@@ -210,6 +210,7 @@ export const createApp = async (options: CreateAppOptions): Promise<{
 		return res.redirect(code, newUrlString);
 	};
 
+	/// 静态文件服务路径 build/web
 	const baseDir = buildDir || path.join(__dirname, "..");
 	const staticGzip = expressStaticGzip(path.join(baseDir, "build/web"));
 
