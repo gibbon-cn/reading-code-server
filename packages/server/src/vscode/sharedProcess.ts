@@ -91,6 +91,8 @@ export class SharedProcess {
 			this.activeProcess.kill();
 		}
 
+		/// final args:
+		/// /usr/bin/node --require ts-node/register --require tsconfig-paths/register /home/jip/code-server/packages/server/src/cli.ts --bootstrap-fork vs/code/electron-browser/sharedProcess/sharedProcessMain --extra-args [] --user-data-dir /home/jip/.local/share/code-server
 		const activeProcess = forkModule(
 			"vs/code/electron-browser/sharedProcess/sharedProcessMain", [],
 			withEnv({ env: { VSCODE_ALLOW_IO: "true" } }), this.userDataDir,

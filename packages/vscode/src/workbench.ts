@@ -192,10 +192,14 @@ export class Workbench {
 	public async initialize(): Promise<void> {
 		this._clipboardContextKey = new RawContextKey("nativeClipboard", client.clipboard.isEnabled);
 
+		/// 工作空间路径
+		debugger
 		const workspace = this.workspace || URI.file(paths.getWorkingDirectory());
 		// If we try to import this above, workbench will be undefined due to
 		// circular imports.
+		/// lib/vscode/src/vs/workbench/workbench.main.ts，加载vs的服务
 		require("vs/workbench/workbench.main");
+		/// lib/vscode/src/vs/workbench/electron-browser/main.ts，浏览器主入口
 		const { main } = require("vs/workbench/electron-browser/main");
 		const config: IWindowConfiguration = {
 			machineId: "1",
@@ -221,6 +225,7 @@ export class Workbench {
 			config.folderUri = workspace as URI;
 		}
 		try {
+			/// 启动主进程
 			await main(config);
 		} catch (ex) {
 			if (ex.toString().indexOf("UriError") !== -1 || ex.toString().indexOf("backupPath") !== -1) {
